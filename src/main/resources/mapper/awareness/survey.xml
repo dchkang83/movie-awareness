@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.app.mapper.awareness.SurveyMapper">
+  
+  <select id="getSurveyList" parameterType="com.app.models.SurveyListRequestVO" resultType="com.app.models.SurveyVO">
+    /* com.app.mapper.awareness.SurveyMapper.getSurveyList.강덕준 */
+    SELECT  sv.*
+    FROM    tb_survey sv
+    <where>
+      <if test="srchColumn != null and srchColumn != '' and srchText != null and srchText != ''">
+        AND   ${srchColumn} LIKE CONCAT('%', #{srchText}, '%')
+      </if>
+    </where>
+    <choose>
+      <when test="orders != null and orders != ''">
+        ORDER BY  ${orders}
+      </when>
+      <otherwise>
+        ORDER BY sv.survey_srl DESC
+      </otherwise>
+    </choose>
+    LIMIT #{offset}, #{limit}
+  </select>
+  
+  <select id="getSurveyListTotalCount" parameterType="com.app.models.SurveyListRequestVO" resultType="java.lang.Integer">
+    /* com.app.mapper.awareness.SurveyMapper.getSurveyListTotalCount.강덕준 */
+    SELECT  COUNT(*)
+    FROM    tb_survey sv
+    <where>
+      <if test="srchColumn != null and srchColumn != '' and srchText != null and srchText != ''">
+        AND   ${srchColumn} LIKE CONCAT('%', #{srchText}, '%')
+      </if>
+    </where>
+  </select>
+  
+  <select id="getSurvey" parameterType="java.lang.String" resultType="com.app.models.SurveyVO">
+    /* com.app.mapper.awareness.SurveyMapper.getSurvey.강덕준 */
+    SELECT  sv.*
+    FROM    tb_survey sv
+    WHERE   sv.survey_srl = #{surveySrl}
+  </select>
+  
+  <insert id="insertSurvey" parameterType="com.app.models.SurveyVO">
+    /* com.app.mapper.awareness.SurveyMapper.insertSurvey.강덕준 */
+    <selectKey keyProperty="surveySrl" resultType="String" order="AFTER">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    INSERT INTO tb_survey
+    (
+      survey_name,
+      survey_description,
+      survey_status,
+      start_date,
+      end_date,
+      bl_male10,
+      bl_male20,
+      bl_male30,
+      bl_male40,
+      bl_male50,
+      bl_female10,
+      bl_female20,
+      bl_female30,
+      bl_female40,
+      bl_female50,
+      is_block,
+      is_finish,
+      created_user_srl,
+      created_at,
+      updated_user_srl,
+      updated_at
+    )
+    VALUES
+    (
+      #{surveyName},
+      #{surveyDescription},
+      #{surveyStatus},
+      #{startDate},
+      #{endDate},
+      #{blMale10},
+      #{blMale20},
+      #{blMale30},
+      #{blMale40},
+      #{blMale50},
+      #{blFemale10},
+      #{blFemale20},
+      #{blFemale30},
+      #{blFemale40},
+      #{blFemale50},
+      #{isBlock},
+      #{isFinish},
+      #{createdUserSrl},
+      NOW(),
+      #{updatedUserSrl},
+      NOW()
+    )
+  </insert>
+  
+  <update id="updateSurvey" parameterType="com.app.models.SurveyVO">
+    /* com.app.mapper.awareness.SurveyMapper.updateSurvey.강덕준 */
+    UPDATE  tb_survey
+    SET     survey_name         = #{surveyName},
+            survey_description  = #{surveyDescription},
+            survey_status       = #{surveyStatus},
+            start_date          = #{startDate},
+            end_date            = #{endDate},
+            bl_male10           = #{blMale10},
+            bl_male20           = #{blMale20},
+            bl_male30           = #{blMale30},
+            bl_male40           = #{blMale40},
+            bl_male50           = #{blMale50},
+            bl_female10         = #{blFemale10},
+            bl_female20         = #{blFemale20},
+            bl_female30         = #{blFemale30},
+            bl_female40         = #{blFemale40},
+            bl_female50         = #{blFemale50},
+            is_block            = #{isBlock},
+            is_finish           = #{isFinish},
+            updated_user_srl    = #{updatedUserSrl},
+            updated_at          = NOW()
+    WHERE   survey_srl  = #{surveySrl}
+  </update>
+  
+  <update id="deleteSurvey" parameterType="java.lang.String">
+    /* com.app.mapper.awareness.SurveyMapper.deleteSurvey.강덕준 */
+    UPDATE  tb_survey
+    SET     is_delete           = 'Y',
+            updated_user_srl    = #{updatedUserSrl},
+            updated_at          = NOW()
+    WHERE   survey_srl  = #{surveySrl}
+  </update>
+</mapper>

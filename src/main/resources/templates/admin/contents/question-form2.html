@@ -1,0 +1,36 @@
+<script type="text/javascript" src="/js/admin/question-form2.js" charset="UTF-8"></script>
+
+<!-- 탭 컨텐츠 시작 -->
+<div id="G_HEADER_FIEXD_EDGE">
+  <!-- 상단 고정된 영역 -->
+  <form name="fmItemSearch" id="fmItemSearch">
+    <!-- 현재페이지 -->
+    <input type="hidden" name="pageNumber" id="pageNumber" value="" />
+    <!-- 한페이지 레코드 수 -->
+    <input type="hidden" name="pageLimit" id="pageLimit" value="" />
+    <!-- 정렬 방법 -->
+    <input type="hidden" name="orderBy" id="orderBy" value="" />
+    
+    <input type="hidden" name="questionSrl" id="questionSrl" th:value="${#httpServletRequest.getParameter('questionSrl')}" />
+  </form>
+</div>
+  
+  <!-- 처리버튼 영역 start -->
+  <div>
+    <button type="button" id="btn_insert_templete" class="btn btn-md btn-primary" onclick="javascript:fnAddListRow_QuestionItem()">
+      <i class="fa fa-plus"></i> 추가
+    </button>
+    <button type="button" id="btn_update_templete" class="btn btn-md btn-primary" onclick="javascript:fnSaveListRow_QuestionItem()">
+      <i class="fa fa-save"></i> 저장
+    </button>
+  </div>
+  <!-- 처리버튼 영역 end -->
+  <div style="height: 10px;"></div>
+  
+
+<form name="fmItemList" id="fmItemList">
+  <div id="G_CONTENTS_EDGE" class="contents">
+    <div id="ctrl_QUESTION_ITEM_LIST" class="list_edge"></div>
+  </div>
+</form>
+

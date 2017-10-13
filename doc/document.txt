@@ -1,0 +1,93 @@
+
+
+// ### Linux - gradle 설치
+	Step 1: Download Gradle
+		# wget https://services.gradle.org/distributions/gradle-3.4.1-bin.zip
+
+	Step 2: Install Gradle
+		# sudo mkdir /opt/gradle
+		# sudo unzip -d /opt/gradle gradle-3.4.1-bin.zip
+		# export PATH=$PATH:/opt/gradle/gradle-3.4.1/bin
+		# gradle -v
+
+		>> # vi /etc/profile
+		>> # source /etc/profile
+		>> # gradle -v
+
+// ### Linux - 배포하기
+	# shell script 작성
+		git remote rm kang
+		git remote add kang ../repos/kang.deokjoon.git
+
+
+		#! /bin/bash
+
+		echo "##### Step 1. git pull"
+		cd dev
+		git pull kang master
+
+		echo "##### Step 2. gradle build"
+		cd movie-awareness/
+		gradle build
+
+		echo "##### Step 3. springboot process kill"
+		ps -ef|grep 'java.*movie-awareness' | awk '{print $2}' | xargs -r kill -9
+
+		echo "##### Step 4. springboot process start"
+		nohup java -jar -Dspring.profiles.active=dev /home/dev/movie-awareness/build/libs/movie-awareness-0.0.1.jar 1>/dev/null 2>&1 &
+
+	
+	# 
+		// ### Spring boot - Docker sample
+			https://hub.docker.com/r/ninrod/springboot/
+
+ps -ef|grep 'java.*movie-awareness' | awk '{print $2}' | xargs -r kill -9
+nohup java -jar -Dspring.profiles.active=dev /home/dev/movie-awareness/build/libs/movie-awareness-0.0.1.jar 1>/dev/null 2>&1 &
+
+	### 기동되어 있는 java 프로세스 확인
+		ps -ef | grep java
+		3307     12698     1  0 Oct28 ?        00:03:53 java -jar -Dspring.profiles.active=dev movie-awareness-0.0.1.jar
+
+	### stock-x.x.x.jar 파일의 프로세스를 죽이고 업로드한 jar파일을 기동
+		kill -9 12698
+
+	### ps -ef | grep java
+		프로세스 다시 확인
+
+// ### Linux - shell script 작성
+	# vi dev-restart.sh
+
+	---------------------------
+	
+
+	# chmod +x dev-restart.sh
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+// ### dev-restart.sh 생성
+	#! /bin/bash
+	
+	echo "##### Step 1. git pull"
+	cd dev
+	git pull kang master
+	
+	echo "##### Step 2. gradle build"
+	cd movie-awareness/
+	gradle build
+	
+	echo "##### Step 3. springboot process kill"
+	ps -ef|grep 'java.*movie-awareness' | awk '{print $2}' | xargs -r kill -9
+	
+	echo "##### Step 4. springboot process start"
+	nohup java -jar -Dspring.profiles.active=dev /home/dev/movie-awareness/build/libs/movie-awareness-0.0.1.jar 1>/dev/null 2>&1 &
+	
+// ### sh 권한부여
+	# chmod +x dev-restart.sh
+	

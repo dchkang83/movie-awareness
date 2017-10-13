@@ -1,0 +1,26 @@
+<script type="text/javascript" src="/js/admin/survey-form2.js" charset="UTF-8"></script>
+
+<!-- 편집영역 start -->
+<div id="G_CONTENTS_EDGE" class="contents" style="margin-left: 0px;">
+  
+  <div>
+    <div style="display: inline-block;">
+    </div>
+    <div style="display: inline-block; float:right;">
+      <button type='button' class='btn btn-xs btn-default-gray' id='btnExpandAll'>
+        <i class='fa fa-folder-open-o' style='font-size:15px'></i> 확장
+      </button>
+      <button type='button' class='btn btn-xs btn-default-gray' id='btnCollapseAll'>
+        <i class='fa fa-folder-o' style='font-size:15px'></i> 축소
+      </button>
+    </div>
+  </div>
+  
+  <div style="height: 12px;"></div>
+  
+  <form name="fmSurveyForm2" id="fmSurveyForm2">
+    <input type="hidden" id="surveySrl" name="surveySrl" th:value="${#httpServletRequest.getParameter('surveySrl')}" />
+    <div id="tree"></div>
+  </form>
+</div>
+<!-- 편집영역 emd -->

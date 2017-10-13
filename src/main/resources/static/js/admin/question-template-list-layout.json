@@ -1,0 +1,73 @@
+{
+	"information": {
+		"id": "QUESTION_TEMPLATE_LIST",
+		"caption": "질문지 템플릿 그리드",
+		"type": "LIST",
+		"width": "100%",
+		"height": "400",
+		"event": "C,D",
+		"sort": "DB",
+		"pageYn": "Y",
+		"pageDisplay": "10",
+		"activeBgType":"ONE",
+		"ctrlFn": "fnCtrlFunction",
+		"cls": "ne_table table-hover"
+	},
+	"fields": [
+		{
+			"id": "num",
+			"name": "회차",
+			"width": "7%",
+			"align": "center",
+			"cls": "point",
+			"resize": "N",
+			"type": "num_desc"
+		},
+		{
+			"id": "questionName",
+			"name": "질문명",
+			"width": "20%",
+			"align": "left",
+			"cls": "link",
+			"sort": "Y",
+			"resize": "N",
+			"type": "tag"
+		},
+		{
+			"id": "questionDescription",
+			"name": "질문설명",
+			"width": "15%",
+			"align": "left",
+			"sort": "Y",
+			"resize": "N"
+		},
+		{
+			"id": "questionType",
+			"name": "질문형태",
+			"width": "10%",
+			"align": "center",
+			"sort": "Y",
+			"resize": "N"
+		},
+		{
+			"id": "sortNumber",
+			"name": "정렬순서",
+			"width": "10%",
+			"align": "center",
+			"sort": "Y",
+			"resize": "N"
+		},
+		{
+			"id": "choiceMaxLimit",
+			"name": "최대선택수",
+			"width": "10%",
+			"align": "center",
+			"resize": "N"
+		},
+		{
+			"id": "questionSrl",
+			"name": "질문코드",
+			"width": "0"
+		}
+	]
+}

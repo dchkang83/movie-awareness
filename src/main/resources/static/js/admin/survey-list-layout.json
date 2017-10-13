@@ -1,0 +1,68 @@
+{
+	"information": {
+		"id": "SURVEY_LIST",
+		"caption": "설문 그리드",
+		"type": "LIST",
+		"width": "100%",
+		"height": "400",
+		"event": "C,D",
+		"sort": "DB",
+		"pageYn": "Y",
+		"pageDisplay": "10",
+		"ctrlFn": "fnCtrlFunction",
+		"cls": "ne_table table-hover"
+	},
+	"fields": [
+		{
+			"id": "num",
+			"name": "회차",
+			"width": "8%",
+			"align": "center",
+			"cls": "point",
+			"resize": "N",
+			"type": "num_desc"
+		},
+		{
+			"id": "surveyStatus",
+			"name": "상태",
+			"width": "8%",
+			"align": "center",
+			"sort": "Y",
+			"resize": "N",
+			"type": "tag"
+		},
+		{
+			"id": "surveyName",
+			"name": "조사명",
+			"width": "54%",
+			"align": "left",
+			"cls": "link",
+			"sort": "Y",
+			"resize": "N"
+		},
+		{
+			"id": "startDate",
+			"name": "시작일",
+			"width": "15%",
+			"align": "center",
+			"sort": "Y",
+			"resize": "N"
+		},
+		{
+			"id": "endDate",
+			"name": "종료일",
+			"width": "15%",
+			"align": "center",
+			"sort": "Y",
+			"resize": "N"
+		},
+		{
+			"id": "surveySrl",
+			"name": "설문조사순번",
+			"width": "0",
+			"align": "center",
+			"cls": "point",
+			"resize": "N"
+		}
+	]
+}

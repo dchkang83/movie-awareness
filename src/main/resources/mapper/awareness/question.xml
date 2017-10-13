@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.app.mapper.awareness.QuestionMapper">
+  
+  <select id="getQuestionList" parameterType="com.app.models.QuestionListRequestVO" resultType="com.app.models.QuestionListVO">
+    /* com.app.mapper.awareness.QuestionMapper.getQuestionList.강덕준 */
+    SELECT  qt.*,
+            sv.survey_name
+    FROM    tb_question qt INNER JOIN tb_survey sv
+              ON qt.survey_srl = sv.survey_srl
+    <where>
+      <if test="srchColumn != null and srchColumn != '' and srchText != null and srchText != ''">
+        AND   ${srchColumn} LIKE CONCAT('%', #{srchText}, '%')
+      </if>
+    </where>
+    <choose>
+      <when test="orders != null and orders != ''">
+        ORDER BY  ${orders}
+      </when>
+      <otherwise>
+        ORDER BY  qt.survey_srl DESC
+      </otherwise>
+    </choose>
+    LIMIT #{offset}, #{limit}
+  </select>
+  
+  <select id="getQuestionListTotalCount" parameterType="com.app.models.QuestionListRequestVO" resultType="java.lang.Integer">
+    /* com.app.mapper.awareness.QuestionMapper.getQuestionListTotalCount.강덕준 */
+    SELECT  COUNT(*)
+    FROM    tb_question qt INNER JOIN tb_survey sv
+              ON qt.survey_srl = sv.survey_srl
+    <where>
+      <if test="srchColumn != null and srchColumn != '' and srchText != null and srchText != ''">
+        AND   ${srchColumn} LIKE CONCAT('%', #{srchText}, '%')
+      </if>
+    </where>
+  </select>
+  
+  <select id="getQuestion" parameterType="java.lang.String" resultType="com.app.models.QuestionVO">
+    /* com.app.mapper.awareness.QuestionMapper.getQuestion.강덕준 */
+    SELECT  qt.*
+    FROM    tb_question qt
+    WHERE   qt.question_srl = #{questionSrl}
+  </select>
+  
+  <insert id="insertQuestion" parameterType="com.app.models.QuestionVO">
+    /* com.app.mapper.awareness.QuestionMapper.insertQuestion.강덕준 */
+    <selectKey keyProperty="questionSrl" resultType="String" order="AFTER">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    INSERT INTO tb_question
+    (
+      question_name,
+      question_description,
+      question_type,
+      sort_number,
+      choice_max_limit,
+      survey_srl,
+      created_user_srl,
+      created_at,
+      updated_user_srl,
+      updated_at
+    )
+    VALUES
+    (
+      #{questionName},
+      #{questionDescription},
+      #{questionType},
+      #{sortNumber},
+      #{choiceMaxLimit},
+      #{surveySrl},
+      #{createdUserSrl},
+      NOW(),
+      #{updatedUserSrl},
+      NOW()
+    )
+  </insert>
+  
+  <update id="updateQuestion" parameterType="com.app.models.QuestionVO">
+    /* com.app.mapper.awareness.QuestionMapper.updateQuestion.강덕준 */
+    UPDATE  tb_question
+    SET     question_name         = #{questionName},
+            question_description  = #{questionDescription},
+            question_type         = #{questionType},
+            sort_number           = #{sortNumber},
+            choice_max_limit      = #{choiceMaxLimit},
+            survey_srl            = #{surveySrl},
+            updated_user_srl      = #{updatedUserSrl},
+            updated_at            = NOW()
+    WHERE   question_srl  = #{questionSrl}
+  </update>
+  
+  <update id="deleteQuestion" parameterType="java.lang.String">
+    /* com.app.mapper.awareness.QuestionMapper.deleteQuestion.강덕준 */
+    UPDATE  tb_question
+    SET     is_delete           = 'Y',
+            updated_user_srl    = #{updatedUserSrl},
+            updated_at          = NOW()
+    WHERE   question_srl  = #{questionSrl}
+  </update>
+  
+  <resultMap id="questionResultMap" type="com.app.common.models.TreeVO">
+    <id         property="id"           column="question_srl"/>
+    <result     property="text"         column="question_name"/>
+    <collection property="nodes"        javaType="java.util.ArrayList" resultMap="questionItemResultMap" />
+  </resultMap>
+  
+  <resultMap id="questionItemResultMap" type="com.app.common.models.TreeNodeVO">
+    <id         property="id"           column="item_srl"/>
+    <result     property="text"         column="item_name"/>
+  </resultMap>
+  
+  <select id="getQuestionItemTree" parameterType="java.lang.String" resultMap="questionResultMap">
+    /* com.app.mapper.awareness.QuestionMapper.getQuestionItemTree.강덕준 */
+    SELECT  qt.survey_srl,
+            qt.question_srl,
+			qt.question_name,
+			qt.sort_number AS question_sort_number,
+			it.item_srl,
+			it.item_name,
+			it.sort_number AS item_sort_number
+    FROM    tb_question qt INNER JOIN tb_item it
+              ON qt.question_srl = it.question_srl
+    WHERE   qt.survey_srl = #{surveySrl}
+  </select>
+</mapper>

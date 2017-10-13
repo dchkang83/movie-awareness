@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.app.mapper.mssql1.AccountMapper">
+
+  <select id="getAccount" parameterType="java.lang.String" resultType="com.app.models.Account">
+    /* com.app.mapper.mssql1.AccountMapper.getAccount.강덕준 */
+    SELECT  111 AS no,
+            'dchkang' AS ac,
+            '$2a$10$zN0PQnfAOum0ZUeh.yS/FuyJxrr.vq79sCdLTOn7oOaTLgBwglCfC' AS pw,
+            'ROLE_ADMIN' AS role
+  </select>
+  
+</mapper>

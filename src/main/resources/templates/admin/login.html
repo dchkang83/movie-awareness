@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <title>Spring Security Example </title>
+    <div th:replace="/admin/fragments/header :: header-css"/>
+</head>
+<body>
+
+<!-- <div th:replace="/admin/fragments/header :: header"/> -->
+
+<!--
+<div class="container">
+  <div class="text-center animated fadeInDown">
+    <h2 class="logo-name">영화인지도 조사</h2>
+    <p class="description" ng-bind-html="desc"></p>
+  </div>
+  <div class="middle-box text-center loginscreen animated fadeInDown">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+      <form th:action="@{/admin/login}" method="post">
+        <div class="form-group">
+          <input type="text" name="username" id="username" class="form-control" placeholder="아이디" required="required" value="dchkang" />
+        </div>
+        <div class="form-group">
+          <input type="password" name="password" id="password" class="form-control" placeholder="패스워드" required="required" value="movie2017@" />
+        </div>
+        
+        <button type="submit" class="btn btn-lg btn-primary btn-block" value="Sign In"></button>
+        
+      </form>
+      <p class="message-error">{{ 'message.401' | translate }}</p>
+    </div>
+  </div>
+</div>
+-->
+
+
+<div class="container">
+    <div class="row" style="margin-top:20px">
+        <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+            <form th:action="@{/admin/login}" method="post">
+                <fieldset>
+                    <h1>로그인</h1>
+
+                    <div th:if="${param.error}">
+                        <div class="alert alert-danger">
+                            Invalid username and password.
+                        </div>
+                    </div>
+                    <div th:if="${param.logout}">
+                        <div class="alert alert-info">
+                            You have been logged out.
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" name="username" id="username" value="dchkang" class="form-control input-lg"
+                               placeholder="UserName" required="true" autofocus="true"/>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password" id="password" value="movie2017@" class="form-control input-lg"
+                               placeholder="Password" required="true"/>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                            <input type="submit" class="btn btn-lg btn-primary btn-block" value="Sign In"/>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- <div th:replace="/admin/fragments/footer :: footer"/> -->
+
+</body>
+</html>

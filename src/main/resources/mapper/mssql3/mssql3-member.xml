@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.app.mapper.mssql3.mssql3MemberMapper">
+  
+  <select id="getmssql3MemberList" parameterType="com.app.models.mssql3MemberListRequestVO" resultType="com.app.models.mssql3MemberVO">
+    /* com.app.mapper.mssql3.mssql3MemberMapper.getmssql3MemberList.강덕준 */
+    SELECT  A.MemberCode,
+            A.MemberName
+    FROM    MC_MEMBER A WITH (NOLOCK)
+    <where>
+    </where>
+    <choose>
+      <when test="orders != null and orders != ''">
+        ORDER BY  ${orders}
+      </when>
+      <otherwise>
+        ORDER BY  1
+      </otherwise>
+    </choose>
+    OFFSET  #{offset} ROWS
+    FETCH
+      NEXT #{limit} ROWS ONLY
+  </select>
+  
+  <select id="getmssql3MemberListTotalCount" parameterType="com.app.models.mssql3MemberListRequestVO" resultType="java.lang.Integer">
+    /* com.app.mapper.mssql3.mssql3MemberMapper.getmssql3MemberListTotalCount.강덕준 */
+    SELECT  COUNT(*)
+    FROM    MC_MEMBER A WITH (NOLOCK)
+    <where>
+    </where>
+  </select>
+  
+  <resultMap id="mcmMap" type="com.app.models.mssql3MemberVO"></resultMap>
+  <select id="getmssql3Members" statementType="CALLABLE" parameterType="com.app.models.SurveyVO" resultMap="mcmMap,mcmMap,mcmMap,mcmMap,mcmMap,mcmMap,mcmMap,mcmMap,mcmMap,mcmMap">
+    /* com.app.mapper.mssql3.mssql3MemberMapper.getUSP_AWARENESS_GET_MEMBER_TARGET_LIST.강덕준 */
+    {
+      CALL USP_AWARENESS_GET_MEMBER_TARGET_LIST (#{blMale10}, #{blFemale10}, #{blMale20}, #{blFemale20}, #{blMale30}, #{blFemale30}, #{blMale40}, #{blFemale40}, #{blMale50}, #{blFemale50})
+    }
+  </select>
+</mapper>

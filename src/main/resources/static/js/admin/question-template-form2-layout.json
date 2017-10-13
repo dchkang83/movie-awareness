@@ -1,0 +1,81 @@
+{
+	"information": {
+		"id": "QUESTION_ITEM_TEMPLATE_LIST",
+		"caption": "문항 템플릿 그리드",
+		"type": "LIST",
+		"width": "100%",
+		"height": "400",
+		"event": "",
+		"sort": "DB",
+		"pageYn": "N",
+		"pageDisplay": "10",
+		"activeBgType":"ONE",
+		"ctrlFn": "fnCtrlFunction_QuestionItemTemplate",
+		"cls": "ne_table table-hover"
+	},
+	"fields": [
+		{
+			"id": "rowNum",
+			"name": "순번",
+			"width": "8%",
+			"align": "center",
+			"cls": "point",
+			"resize": "N",
+			"type": "num_asc"
+		},
+		{
+			"id": "itemSrl",
+			"name": "문항키",
+			"width": "0"
+		},
+		{
+			"id": "dbType",
+			"name": "TYPE",
+			"width": "0",
+			"align": "center",
+			"resize": "N"
+		},
+		{
+			"id": "itemName",
+			"name": "문항명",
+			"width": "40%",
+			"align": "left",
+			"cls": "link",
+			"sort": "Y",
+			"resize": "N",
+			"tit": "Y",
+			"type": "text",
+			"edit": "Y"
+		},
+		{
+			"id": "itemDescription",
+			"name": "문항설명",
+			"width": "45%",
+			"align": "left",
+			"sort": "Y",
+			"resize": "N",
+			"tit": "Y",
+			"type": "text",
+			"edit": "Y"
+		},
+		{
+			"id": "sortNumber",
+			"name": "정렬순서",
+			"width": "15%",
+			"align": "center",
+			"sort": "Y",
+			"resize": "N",
+			"type": "text",
+			"edit": "Y"
+		},
+		{
+			"id": "btnDelt",
+			"name": "삭제",
+			"width": "15%",
+			"align": "center",
+			"resize": "N",
+			"render": "fnRender_btnDelt_QuestionItemTemplate"
+		}
+		
+	]
+}

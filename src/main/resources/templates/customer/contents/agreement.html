@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head>
+<title>영화인지도조사 - 고객</title>
+
+<div th:replace="/customer/fragments/header :: header-css" />
+<div th:replace="/customer/fragments/header :: header-js" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+</head>
+<body>
+
+  <div th:replace="/customer/fragments/header :: header" />
+
+  <div class="container">
+    <!-- 상단고정 서브타이틀 -->
+    <div th:replace="/customer/fragments/fixed_subtitle :: fixed_subtitle" />
+    
+    <!-- 메인 컨텐츠 -->
+    <div id="customer_contents_body">
+      <div th:replace="/customer/fragments/agreement :: agreement" />
+    </div>
+
+  </div>
+
+  <div th:replace="/customer/fragments/footer :: footer" />
+
+</body>
+<script>
+$.get('/agreement.txt', function(data) {
+  $("#agreements_box").val(data);
+});
+var agree = new Agree();
+</script>
+</html>

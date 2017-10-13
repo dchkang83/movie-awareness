@@ -1,0 +1,107 @@
+{
+	"information": {
+		"id": "MEMBER_GRID",
+		"caption": "고객 그리드",
+		"type": "LIST",
+		"width": "100%",
+		"height": "400",
+		"event": "C,D",
+		"sort": "DB",
+		"pageYn": "Y",
+		"pageDisplay": "10",
+		"ctrlFn": "fnCtrlFunction",
+		"cls": "ne_table table-hover"
+	},
+	"fields": [
+		{
+			"id": "num",
+			"name": "순번",
+			"width": "60",
+			"align": "center",
+			"cls": "point",
+			"resize": "N",
+			"type": "num_desc"
+		},
+		{
+			"id": "authGubun",
+			"name": "설문조사코드",
+			"width": "100"
+		},
+		{
+			"id": "cinemaCode",
+			"name": "설문조사명",
+			"width": "300",
+			"align": "left"
+		},
+		{
+			"id": "marketingruleagreeyn",
+			"name": "마케팅 동의여부",
+			"width": "90",
+			"align": "center",
+			"cls": "point",
+			"sort": "Y"
+		},
+		{
+			"id": "push01Yn",
+			"name": "PUSH 여부",
+			"width": "70",
+			"align": "center",
+			"cls": "point",
+			"sort": "Y"
+		},
+		{
+			"id": "webId",
+			"name": "고객아이디",
+			"width": "100",
+			"align": "center",
+			"sort": "Y",
+			"resize": "N"
+		},
+		{
+			"id": "memberName",
+			"name": "고객명",
+			"width": "80",
+			"align": "center",
+			"sort": "Y"
+		},
+		{
+			"id": "sex",
+			"name": "성별",
+			"width": "70",
+			"align": "center"
+		},
+		{
+			"id": "age",
+			"name": "나이",
+			"width": "70",
+			"align": "center"
+		},
+		{
+			"id": "mobile",
+			"name": "이동전화번호",
+			"width": "100",
+			"align": "center"
+		},
+		{
+			"id": "emailAddr",
+			"name": "이메일주소",
+			"width": "140",
+			"align": "left"
+		},
+		{
+			"id": "product_cd5",
+			"name": "설문상태",
+			"width": "100"
+		},
+		{
+			"id": "product_cd7",
+			"name": "처리자",
+			"width": "100"
+		},
+		{
+			"id": "val",
+			"name": "처리일",
+			"width": "120"
+		}
+	]
+}

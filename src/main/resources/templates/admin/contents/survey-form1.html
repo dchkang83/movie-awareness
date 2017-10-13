@@ -1,0 +1,120 @@
+<script type="text/javascript" src="/js/admin/survey-form1.js" charset="UTF-8"></script>
+
+<style type="text/css">
+table .a {
+  border: 0px
+}
+
+table .a td {
+  border: 0px;
+  padding: 2px;
+}
+
+table .a table {
+  border: 1px solid #DDDDDD
+}
+
+table.d_table th {
+  text-align: right;
+}
+</style>
+
+<!-- 편집영역 start -->
+<div id="G_CONTENTS_EDGE" class="contents" style="margin-left: 0px;">
+  <form name="fmSurveyForm1" id="fmSurveyForm1">
+    
+    <!-- 설문 상세정보 시작 -->
+    <table class="d_table" border="1" cellspacing="0" summary="설문 상세정보">
+      <colgroup>
+        <col width="150" />
+        <col width="*" />
+        <col width="150" />
+        <col width="*" />
+      </colgroup>
+      <tr>
+        <th scope="row" class="text-info-dk"><i class="fa fa-info-circle "></i> 설문 조사순번</th>
+        <td colspan="3"><input type="text" class="i_text" id="surveySrl" name="surveySrl" th:value="${#httpServletRequest.getParameter('surveySrl')}" readonly="readonly" /></td>
+      </tr>
+      <tr>
+        <th scope="row" class="text-info-dk"><i class="fa fa-info-circle "></i> 조사명</th>
+        <td colspan="3"><input type="text" class="i_text" id="surveyName" name="surveyName" value="" title="조사명" style="width: 100%;" data-required="true" /></td>
+      </tr>
+      <tr>
+        <th scope="row">설명</th>
+        <td colspan="3">
+          <div class="item" style="line-height: 200%">
+            <textarea name="surveyDescription" id="surveyDescription" style="width: 70%; height: 100px"></textarea>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row" class="text-info-dk"><i class="fa fa-info-circle "></i> 상태</th>
+        <td colspan="3">
+          <select id="surveyStatus" name="surveyStatus" title="상태" style="width: 120px;">
+            <option value="0">중지</option>
+            <option value="1">운영</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row" class="text-info-dk"><i class="fa fa-info-circle "></i> 시작일</th>
+        <td><input type="text" class="i_text" id="startDate" name="startDate" value="" title="시작일" data-required="true" /></td>
+        <th scope="row" class="text-info-dk"><i class="fa fa-info-circle "></i> 종료일</th>
+        <td><input type="text" class="i_text" id="endDate" name="endDate" value="" title="종료일" data-required="true" /></td>
+      </tr>
+      <tr>
+        <th scope="row" class="text-info-dk"><i class="fa fa-info-circle "></i> 남자 10대</th>
+        <td><input type="text" class="i_text" id="blMale10" name="blMale10" value="" title="남자 10대" data-required="true" /></td>
+        <th scope="row" class="text-info-dk"><i class="fa fa-info-circle "></i> 여자 10대</th>
+        <td><input type="text" class="i_text" id="blFemale10" name="blFemale10" value="" title="여자 10대" data-required="true" /></td>
+      </tr>
+      <tr>
+        <th scope="row" class="text-info-dk"><i class="fa fa-info-circle "></i> 남자 20대</th>
+        <td><input type="text" class="i_text" id="blMale20" name="blMale20" value="" title="남자 20대" data-required="true" /></td>
+        <th scope="row" class="text-info-dk"><i class="fa fa-info-circle "></i> 여자 20대</th>
+        <td><input type="text" class="i_text" id="blFemale20" name="blFemale20" value="" title="여자 20대" data-required="true" /></td>
+      </tr>
+      <tr>
+        <th scope="row" class="text-info-dk"><i class="fa fa-info-circle "></i> 남자 30대</th>
+        <td><input type="text" class="i_text" id="blMale30" name="blMale30" value="" title="남자 30대" data-required="true" /></td>
+        <th scope="row" class="text-info-dk"><i class="fa fa-info-circle "></i> 여자 30대</th>
+        <td><input type="text" class="i_text" id="blFemale30" name="blFemale30" value="" title="여자 30대" data-required="true" /></td>
+      </tr>
+      <tr>
+        <th scope="row" class="text-info-dk"><i class="fa fa-info-circle "></i> 남자 40대</th>
+        <td><input type="text" class="i_text" id="blMale40" name="blMale40" value="" title="남자 40대" data-required="true" /></td>
+        <th scope="row" class="text-info-dk"><i class="fa fa-info-circle "></i> 여자 40대</th>
+        <td><input type="text" class="i_text" id="blFemale40" name="blFemale40" value="" title="여자 40대" data-required="true" /></td>
+      </tr>
+      <tr>
+        <th scope="row" class="text-info-dk"><i class="fa fa-info-circle "></i> 남자 50대</th>
+        <td><input type="text" class="i_text" id="blMale50" name="blMale50" value="" title="남자 50대" data-required="true" /></td>
+        <th scope="row" class="text-info-dk"><i class="fa fa-info-circle "></i> 여자 50대</th>
+        <td><input type="text" class="i_text" id="blFemale50" name="blFemale50" value="" title="여자 50대" data-required="true" /></td>
+      </tr>
+    </table>
+    <!-- 설문 상세정보 종료 -->
+    
+  </form>
+  
+  <!-- 처리버튼 영역 start -->
+  <div class="text-right padder-v pos_a" id="submit_btns" style="right:0px; margin-right:36px;">
+    <button type="button" id="btn_insert_templete" class="btn btn-md btn-primary" onclick="javascript:fnAddDetail()" th:if="${#httpServletRequest.getParameter('surveySrl')}">
+      <i class="fa fa-plus"></i> 추가
+    </button>
+    <button type="button" id="btn_update_templete" class="btn btn-md btn-primary" onclick="javascript:fnSaveDetail()">
+      <i class="fa fa-save"></i> 저장
+    </button>
+    <button type="button" id="btn_delete_templete" class="btn btn-md btn-danger" onclick="javascript:fnDeleteDetail()" th:if="${#httpServletRequest.getParameter('surveySrl')}">
+      <i class="fa fa-trash-o"></i> 삭제
+    </button>
+    <button type="button" id="btn_insert_templete" class="btn btn-md btn-primary" onclick="javascript:fnGetTarget()" th:if="${#httpServletRequest.getParameter('surveySrl')}">
+      <i class="fa fa-download"></i> 대상자 가져오기
+    </button>
+  </div>
+  <!-- 처리버튼 영역 end -->
+  
+  
+</div>
+<!-- 편집영역 emd -->
+

@@ -1,0 +1,108 @@
+<script type="text/javascript" src="/js/admin/question-template-form1.js" charset="UTF-8"></script>
+<style type="text/css">
+table .a {
+  border: 0px
+}
+
+table .a td {
+  border: 0px;
+  padding: 2px;
+}
+
+table .a table {
+  border: 1px solid #DDDDDD
+}
+
+table.d_table th {
+  text-align: right;
+}
+</style>
+
+<!-- 편집영역 start -->
+<div id="G_CONTENTS_EDGE" class="contents" style="margin-left: 0px;">
+  <form name="fmQuestionTemplateForm" id="fmQuestionTemplateForm">
+    <!-- 질문지 상세정보 시작 -->
+    <fieldset>
+      <legend>질문지 상세정보</legend>
+      <div>
+        <!--
+        <div class="d_wrap">
+          <div class="f_l m-t5">
+            <p class="buTitle02 m-t5">질문지 상세정보</p>
+          </div>
+          <div class="f_r">
+            <div class="text-info-dk text-right m-t10" id="">
+              <i class="fa fa-info-circle"></i> 아이콘은 필수입력 항목입니다.
+            </div>
+          </div>
+        </div>
+        -->
+        
+        <table class="d_table" border="1" cellspacing="0" summary="질문지 상세정보">
+          <colgroup>
+            <col width="150" />
+            <col width="*" />
+            <col width="150" />
+            <col width="*" />
+          </colgroup>
+          <tr>
+            <th scope="row" class="text-info-dk"><i class="fa fa-info-circle "></i> 질문지 조사순번</th>
+            <td colspan="3"><input type="text" class="i_text" id="questionSrl" name="questionSrl" th:value="${#httpServletRequest.getParameter('questionSrl')}" readonly="readonly" /></td>
+          </tr>
+          <tr>
+            <th scope="row" class="text-info-dk"><i class="fa fa-info-circle "></i> 질문명</th>
+            <td colspan="3"><input type="text" class="i_text" id="questionName" name="questionName" value="" title="질문명" style="width: 100%;" data-required="true" /></td>
+          </tr>
+          <tr>
+            <th scope="row">질문설명</th>
+            <td colspan="3">
+              <div class="item" style="line-height: 200%">
+                <textarea name="questionDescription" id="questionDescription" style="width: 70%; height: 100px"></textarea>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row" class="text-info-dk"><i class="fa fa-info-circle "></i> 질문형태</th>
+            <td>
+              <select id="questionType" name="questionType" title="질문형태" style="width: 120px;">
+                <option value="1">Radio</option>
+                <option value="2">CheckBox</option>
+                <option value="3">주관식</option>
+              </select>
+            </td>
+            <th scope="row" class="text-info-dk"><i class="fa fa-info-circle "></i> 정렬순서</th>
+            <td>
+              <input type="text" class="i_text" id="sortNumber" name="sortNumber" value="" title="정렬순서" data-required="true" />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row" class="text-info-dk"><i class="fa fa-info-circle "></i> 최대선택수</th>
+            <td colspan="3">
+              <input type="text" class="i_text" id="choiceMaxLimit" name="choiceMaxLimit" value="" title="최대선택수" data-required="true" />
+            </td>
+          </tr>
+        </table>
+      </div>
+    </fieldset>
+    <!-- 질문지 상세정보 종료 -->
+    
+  </form>
+  
+  <!-- 처리버튼 영역 start -->
+  <div class="text-right padder-v pos_a" id="submit_btns" style="right:0px; margin-right:36px;">
+    <button type="button" id="btn_insert_templete" class="btn btn-md btn-primary" onclick="javascript:fnAddDetail()" th:if="${#httpServletRequest.getParameter('questionSrl')}">
+      <i class="fa fa-plus"></i> 추가
+    </button>
+    <button type="button" id="btn_update_templete" class="btn btn-md btn-primary" onclick="javascript:fnSaveDetail()">
+      <i class="fa fa-save"></i> 저장
+    </button>
+    <button type="button" id="btn_delete_templete" class="btn btn-md btn-danger" onclick="javascript:fnDeleteDetail()" th:if="${#httpServletRequest.getParameter('questionSrl')}">
+      <i class="fa fa-trash-o"></i> 삭제
+    </button>
+  </div>
+  <!-- 처리버튼 영역 end -->
+  
+  
+</div>
+<!-- 편집영역 emd -->
+

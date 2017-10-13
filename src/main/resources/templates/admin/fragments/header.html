@@ -1,0 +1,148 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<div th:fragment="header-css">
+  <!-- this is header-css -->
+  <link rel="stylesheet" type="text/css" media="all" href="/webjars/jquery-ui/1.12.1/jquery-ui.min.css" />
+
+  <link rel="stylesheet" type="text/css" media="all" href="/webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" media="all" href="/webjars/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+  <link rel="stylesheet" th:href="@{/css/default.css}" href="../../css/default.css" />
+  <link rel="stylesheet" th:href="@{/css/main.css}" href="../../css/main.css" />
+  <link rel="stylesheet" th:href="@{/css/header.css}" href="../../css/header.css" />
+  <link rel="stylesheet" th:href="@{/css/app.v3.css}" href="../../css/app.v3.css" />
+  <link rel="stylesheet" th:href="@{/css/table.css}" href="../../css/table.css" />
+  <link rel="stylesheet" th:href="@{/css/paginate.css}" href="../../css/paginate.css" />
+  <link rel="stylesheet" th:href="@{/css/layer.css}" href="../../css/layer.css" />
+  <link rel="stylesheet" th:href="@{/css/button.css}" href="../../css/button.css" />
+</div>
+
+<div th:fragment="header-js">
+  <script type="text/javascript" src="/webjars/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/webjars/jquery-ui/1.12.1/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="/webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/webjars/bootstrap-treeview/1.2.0/src/js/bootstrap-treeview.js"></script>
+  
+  <script type="text/javascript" src="/plugins/jquery/jquery.isloading.min.js"></script>
+
+  <script type="text/javascript" src="/js/core/pd-prototype.js"></script>
+  <script type="text/javascript" src="/js/core/pd-common.js"></script>
+  <script type="text/javascript" src="/js/core/pd-init.js"></script>
+  <script type="text/javascript" src="/js/core/pd-request.js"></script>
+
+  <script type="text/javascript" src="/js/core/pd-utils.js"></script>
+  <script type="text/javascript" src="/js/core/pd-storage.js"></script>
+  <script type="text/javascript" src="/js/core/pd-mask.js"></script>
+
+  <script type="text/javascript" src="/js/core/pd-grid.js"></script>
+  <script type="text/javascript" src="/js/core/pd-grid-data.js"></script>
+  <script type="text/javascript" src="/js/core/pd-grid-json.js"></script>
+  <script type="text/javascript" src="/js/core/pd-grid-utils.js"></script>
+
+  <script type="text/javascript" src="/js/admin/common/header.js"></script>
+</div>
+
+</head>
+<body>
+  <div th:fragment="header">
+    <div id="top_header">
+      <div class="top_header_left">
+        <div id="box">
+          <a th:href="@{/admin/index}"><img id="logo" alt="app" src="/image/common/ci/logo_header.png" /></a>
+        </div>
+      </div>
+
+      <div class="top_header_center">
+
+        <div id="idIntegrationAutoDetail" style="position: absolute; z-index: 999999; display: none;">
+          <div id="result_list_sub" style="background: yellow; position: absolute; left: 0;"></div>
+        </div>
+        <div class="top_header_center_right" id='div_auto_login'></div>
+      </div>
+      <div class="top_header_right" style="font-weight: normal; margin-left: 0;">
+
+        <!-- 사용자 정보 시작 -->
+        <ul class="nav navbar-nav navbar-right m-n hidden-xs nav-user user">
+          <li class="dropdown">
+            <div class="dropdown-toggle" href="#" data-toggle="dropdown" style="margin: 0px; padding: 0px; padding-bottom: 10px; color: #ffffff; cursor: pointer;">
+              <span class="thumb-sm avatar pull-left" style="height: 30px; width: 25px;"> <img alt="" src="/image/common/icon_user_photo_default.png" style="height: 25px; width: 25px;" />
+              </span> <span style="text-decoration: underline; padding-left: 5px;" id="user_summary">강덕준 ( dchkang )</span> <b class="caret" style="border-top-color: #fff; border-bottom-color: #fff;"></b>
+            </div>
+            <ul class="dropdown-menu animated fadeInRight" style="width: 250px; font-size: 12px;">
+              <li><span class="arrow top" style="left: 60%;"></span>
+                <div style="padding: 20px; text-align: left; color: #222222;">
+                  <div style="font-size: 17px;">
+                    <strong> 조인스 </strong>
+                  </div>
+                  <br />
+                  <div style="font-size: 14px;">강덕준 님 ( dchkang )</div>
+                  <div>스크린개발팀 - 과장</div>
+                  <div>
+                    이메일 : <a href="#"> kang.deokjoon@app.com</a>
+                  </div>
+                  <br />
+                  <div>접속일시 : 2017 년 07월 05일 12:52:31</div>
+                </div></li>
+              <li class="divider"></li>
+              <li style="text-align: right; height: 30px; margin-right: 10px;">
+
+                <form th:action="@{/admin/logout}" method="post">
+                  <button class="btn btn-xs btn-info" type="submit" id="btn_top_logout" style="color: #fff; padding-bottom: 3px;">
+                    <i class="fa fa-sign-out" style="font-size: 14px;"></i> 로그아웃
+                  </button>
+                </form> <!-- class="btn btn-xs btn-default" -->
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <!-- 사용자 정보 종료 -->
+      </div>
+    </div>
+    
+    <div id="header_menu">
+      <div class="navi_edge">
+        <!-- navi_edge -->
+        <ul>
+          <li class=""><a th:href="@{/admin/index}"><i class="fa fa-home" style="color: rgb(146, 149, 150);"></i>&nbsp;홈</a></li>
+          <li class=""><a href="#">설문조사관리</a>
+            <div>
+              <a id="idMenuHelp_01" href="javascript:PD_Common.fnOpenContent('/admin/survey/survey-mang', 'ADMIN_CONTENTS');">설문조사내역</a>
+              <a id="idMenuHelp_05" href="javascript:PD_Common.fnOpenContent('/admin/question/question-mang', 'ADMIN_CONTENTS');">질문지관리</a>
+              <a id="idMenuHelp_03" href="javascript:PD_Common.fnOpenContent('/admin/survey/target-list', 'ADMIN_CONTENTS');">설문대상자</a>
+              <a id="idMenuHelp_03" href="javascript:PD_Common.fnOpenContent('/admin//survey/mssql3-member-list', 'ADMIN_CONTENTS');">메가시너스맴버</a>
+              <a id="idMenuHelp_03" href="javascript:PD_Common.fnOpenContent('/admin/fiexd-grid-list', 'ADMIN_CONTENTS');">발송이력</a>
+            </div>
+          </li>
+          <li class=""><a href="#">시스템관리</a>
+            <div>
+              <a id="idMenuHelp_05" href="javascript:PD_Common.fnOpenContent('/admin/question-template/question-template-mang', 'ADMIN_CONTENTS');">질문지템플릿관리</a>
+              <a id="idMenuHelp_01" href="javascript:PD_Common.fnOpenContent('/admin/fiexd-grid-list', 'ADMIN_CONTENTS');">공통코드관리</a>
+              <a id="idMenuHelp_03" href="javascript:PD_Common.fnOpenContent('/admin/fiexd-grid-list', 'ADMIN_CONTENTS');">사용자관리</a>
+              <a id="idMenuHelp_05" href="javascript:PD_Common.fnOpenContent('/admin/fiexd-grid-list', 'ADMIN_CONTENTS');">메뉴관리</a>
+            </div>
+          </li>
+          <li class=""><a href="#">샘플</a>
+            <div>
+              <a id="idMenuHelp_01" href="javascript:PD_Common.fnOpenContent('/admin/nomal-grid-list', 'ADMIN_CONTENTS');">그리드</a>
+              <a id="idMenuHelp_03" href="javascript:PD_Common.fnOpenContent('/admin/fiexd-grid-list', 'ADMIN_CONTENTS');">틀고정그리드</a>
+            </div>
+          </li>
+          <li class="">
+            <a href="javascript:PD_Common.fnOpenContent('/', 'ADMIN_CONTENTS');">고객</a>
+          </li>
+          <!--
+            <li class="">
+                <a th:href="@{/customer/index}"><i class="fa fa-home" style="  color: rgb(146, 149, 150);"></i>&nbsp;고객</a>
+            </li>
+            -->
+        </ul>
+      </div>
+      <!-- navi_edge -->
+      <div class="sub_navi_edge"></div>
+
+    </div>
+
+  </div>
+
+</body>
+</html>

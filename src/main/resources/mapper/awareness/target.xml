@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.app.mapper.awareness.TargetMapper">
+  
+  <insert id="insertTargetBatch" parameterType="java.util.Map">
+    /* com.app.mapper.awareness.TargetMapper.insertTargetBatch.강덕준 */
+    INSERT INTO tb_target
+    (
+      verification_code,
+      member_code,
+      customer_name,
+      mobile_number,
+      email_address,
+      gender,
+      birthday,
+      status_code,
+      survey_srl,
+      created_user_srl,
+      created_at,
+      updated_user_srl,
+      updated_at
+    )
+    VALUES
+    <foreach item="item" index="index" collection="list" open="" separator="," close="">
+    (
+      #{item.webId},
+      #{item.memberCode},
+      #{item.memberName},
+      #{item.mobile},
+      #{item.emailAddr},
+      #{item.sex},
+      #{item.birthday},
+      '0',
+      #{surveySrl},
+      #{createdUserSrl},
+      NOW(),
+      #{updatedUserSrl},
+      NOW()
+    )
+    </foreach>
+  </insert>
+  
+  <select id="getTargetList" parameterType="com.app.models.TargetListRequestVO" resultType="com.app.models.TargetListVO">
+    /* com.app.mapper.awareness.TargetMapper.getTargetList.강덕준 */
+    SELECT  tg.*,
+            (
+              CASE
+                WHEN tg.gender = '1' THEN '남자'
+                WHEN tg.gender = '2' THEN '여자'
+                ELSE '중성'
+              END
+            ) AS gender_name,
+            sv.survey_name
+    FROM    tb_target tg INNER JOIN tb_survey sv
+              ON tg.survey_srl = sv.survey_srl
+    <where>
+    </where>
+    <choose>
+      <when test="orders != null and orders != ''">
+        ORDER BY  ${orders}
+      </when>
+      <otherwise>
+      </otherwise>
+    </choose>
+    LIMIT #{offset}, #{limit}
+  </select>
+  
+  <select id="getTargetListTotalCount" parameterType="com.app.models.TargetListRequestVO" resultType="java.lang.Integer">
+    /* com.app.mapper.awareness.TargetMapper.getTargetListTotalCount.강덕준 */
+    SELECT  COUNT(*)
+    FROM    tb_target tg
+    <where>
+    </where>
+  </select>
+  
+  <select id="getTarget" parameterType="java.lang.String" resultType="com.app.models.TargetVO">
+    /* com.app.mapper.awareness.TargetMapper.getTarget.강덕준 */
+    SELECT  tg.*
+    FROM    tb_target tg
+    WHERE   tg.target_srl = #{targetSrl}
+  </select>
+  
+</mapper>

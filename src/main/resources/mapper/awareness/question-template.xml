@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.app.mapper.awareness.QuestionTemplateMapper">
+  
+  <select id="getQuestionTemplateList" parameterType="com.app.models.QuestionTemplateListRequestVO" resultType="com.app.models.QuestionTemplateListVO">
+    /* com.app.mapper.awareness.QuestionTemplateMapper.getQuestionTemplateList.강덕준 */
+    SELECT  qtt.*
+    FROM    tb_question_template qtt
+    <where>
+      <if test="srchColumn != null and srchColumn != '' and srchText != null and srchText != ''">
+        AND   ${srchColumn} LIKE CONCAT('%', #{srchText}, '%')
+      </if>
+    </where>
+    <choose>
+      <when test="orders != null and orders != ''">
+        ORDER BY  ${orders}
+      </when>
+      <otherwise>
+      </otherwise>
+    </choose>
+    LIMIT #{offset}, #{limit}
+  </select>
+  
+  <select id="getQuestionTemplateListTotalCount" parameterType="com.app.models.QuestionTemplateListRequestVO" resultType="java.lang.Integer">
+    /* com.app.mapper.awareness.QuestionTemplateMapper.getQuestionTemplateListTotalCount.강덕준 */
+    SELECT  COUNT(*)
+    FROM    tb_question_template qtt
+    <where>
+      <if test="srchColumn != null and srchColumn != '' and srchText != null and srchText != ''">
+        AND   ${srchColumn} LIKE CONCAT('%', #{srchText}, '%')
+      </if>
+    </where>
+  </select>
+  
+  <select id="getQuestionTemplate" parameterType="java.lang.String" resultType="com.app.models.QuestionTemplateVO">
+    /* com.app.mapper.awareness.QuestionTemplateMapper.getQuestionTemplate.강덕준 */
+    SELECT  qtt.*
+    FROM    tb_question_template qtt
+    WHERE   qtt.question_srl = #{questionSrl}
+  </select>
+  
+  <insert id="insertQuestionTemplate" parameterType="com.app.models.QuestionTemplateVO">
+    /* com.app.mapper.awareness.QuestionTemplateMapper.insertQuestionTemplate.강덕준 */
+    <selectKey keyProperty="questionSrl" resultType="String" order="AFTER">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    INSERT INTO tb_question_template
+    (
+      question_name,
+      question_description,
+      question_type,
+      sort_number,
+      choice_max_limit,
+      created_user_srl,
+      created_at,
+      updated_user_srl,
+      updated_at
+    )
+    VALUES
+    (
+      #{questionName},
+      #{questionDescription},
+      #{questionType},
+      #{sortNumber},
+      #{choiceMaxLimit},
+      #{createdUserSrl},
+      NOW(),
+      #{updatedUserSrl},
+      NOW()
+    )
+  </insert>
+  
+  <update id="updateQuestionTemplate" parameterType="com.app.models.QuestionTemplateVO">
+    /* com.app.mapper.awareness.QuestionTemplateMapper.updateQuestionTemplate.강덕준 */
+    UPDATE  tb_question_template
+    SET     question_name         = #{questionName},
+            question_description  = #{questionDescription},
+            question_type         = #{questionType},
+            sort_number           = #{sortNumber},
+            choice_max_limit      = #{choiceMaxLimit},
+            updated_user_srl      = #{updatedUserSrl},
+            updated_at            = NOW()
+    WHERE   question_srl  = #{questionSrl}
+  </update>
+  
+  <update id="deleteQuestionTemplate" parameterType="java.lang.String">
+    /* com.app.mapper.awareness.QuestionTemplateMapper.deleteQuestionTemplate.강덕준 */
+    UPDATE  tb_question_template
+    SET     is_delete           = 'Y',
+            updated_user_srl    = #{updatedUserSrl},
+            updated_at          = NOW()
+    WHERE   question_srl  = #{questionSrl}
+  </update>
+  
+  <resultMap id="questionResultMap" type="com.app.common.models.TreeVO">
+    <id         property="id"           column="question_srl"/>
+    <result     property="text"         column="question_name"/>
+    <collection property="nodes"        javaType="java.util.ArrayList" resultMap="questionItemResultMap" />
+  </resultMap>
+  
+  <resultMap id="questionItemResultMap" type="com.app.common.models.TreeNodeVO">
+    <id         property="id"           column="item_srl"/>
+    <result     property="text"         column="item_name"/>
+  </resultMap>
+  
+  <select id="getQuestionTemplateItemTree" parameterType="java.lang.String" resultMap="questionResultMap">
+    /* com.app.mapper.awareness.QuestionTemplateMapper.getQuestionTemplateItemTree.강덕준 */
+    SELECT  qtt.question_srl,
+			qtt.question_name,
+			qtt.sort_number AS question_sort_number,
+			it.item_srl,
+			it.item_name,
+			it.sort_number AS item_sort_number
+    FROM    tb_question_template qtt INNER JOIN tb_item it
+              ON qtt.question_srl = it.question_srl
+  </select>
+  
+  <select id="getQuestionTemplateListAll" resultType="com.app.models.QuestionTemplateListVO">
+    /* com.app.mapper.awareness.QuestionTemplateMapper.getQuestionTemplateListAll.강덕준 */
+    SELECT  qtt.*
+    FROM    tb_question_template qtt
+  </select>
+</mapper>

@@ -1,0 +1,92 @@
+<script type="text/javascript" src="/js/admin/common/pop-grid-config-setting.js" charset="UTF-8"></script>
+
+<input type="hidden" id="listId" name="listId" th:value="${#httpServletRequest.getParameter('listId')}"  />
+<input type="hidden" id="xmlPath" name="xmlPath" th:value="${#httpServletRequest.getParameter('xmlPath')}"  />
+<input type="hidden" id="pop_layer_id" name="pop_layer_id" th:value="${#httpServletRequest.getParameter('pop_layer_id')}"  />
+
+<table style='table-layout: fixed;'>
+<colgroup>
+    <col width='300' />
+    <col width='70' />
+    <col width='300' />
+</colgroup>
+<thead>
+    <tr>
+        <th> - 전체 항목</th>
+        <td></td>
+        <th> - 사용 항목</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td height="340">
+        <select id="idGridFieldsLeft" multiple="multiple" size="3" style="width:100%; height:100%;">
+            <option>Option 0</option>
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>------------------ 틀고정 ------------------</option>
+            <option>Option 3</option>
+            <option>Option 4</option>
+        </select>
+    </td>
+    <td style='text-align: center;'>
+        <button type='button' class='btn btn-xs btn-default' id='btnConfigSettingAdd'>
+            &nbsp;추가
+            <i class="fa fa-caret-right"></i>
+        </button>
+        <br />
+        <br />
+        <button type='button' class='btn btn-xs btn-default' id='btnConfigSettingDelt'>
+            &nbsp;삭제
+            <i class="fa fa-caret-left"></i>
+        </button>
+    </td>
+    <td height="340">
+        <select id="idGridFieldsRight" multiple="multiple" size="3" style="width:100%; height:100%;">
+            <option>Option 0</option>
+            <option>Option 1</option>
+            <option>------------------ 틀고정 ------------------</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+            <option>Option 4</option>
+        </select>
+    </td>
+</tr>
+</tbody>
+
+
+<tfoot>
+<tr><td colspan="3" height='5'></td></tr>
+<tr>
+    <td></td>
+    <td colspan="2" style='text-align: right;'>
+        <button type='button' class='btn btn-xs btn-default' id='btnConfigSettingReset'>
+            <i class="fa fa-reply"></i>
+            &nbsp;초기화
+        </button>
+        <button type='button' class='btn btn-xs btn-default' id='btnConfigSettingUp'>
+            &nbsp;위
+            <i class="fa fa-angle-up"></i>
+        </button>
+        <button type='button' class='btn btn-xs btn-default' id='btnConfigSettingDown'>
+            &nbsp;아래
+            <i class="fa fa-angle-down"></i>
+        </button>
+        
+        <button type='button' class='btn btn-xs btn-default' id='btnConfigSettingTop'>
+            &nbsp;맨위
+            <i class="fa fa-angle-double-up"></i>
+        </button>
+        <button type='button' class='btn btn-xs btn-default' id='btnConfigSettingBottom'>
+            &nbsp;맨아래
+            <i class="fa fa-angle-double-down"></i>
+        </button>
+    </td>
+</tr>
+</tfoot>
+</table>
+
+<div class="text-center p-b20" style="width:399px;bottom:0px;background-color:#fff;margin:0px auto">
+    <button id="btnLayerPopApply" type="button" class="btn small btn-primary lt btn-lx  m-b5  m-t20">적용</button>
+    <button id="btnLayerPopCancel" type="button" class="btn small btn-light lt btn-lx  m-b5  m-t20">취소</button>
+</div>

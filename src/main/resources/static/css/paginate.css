@@ -1,0 +1,47 @@
+/**
+ *	Paginate - v 0.1.0
+ */
+
+@charset "UTF-8";
+
+.paginate9{padding:5px 0;text-align:center}
+.paginate9 a,.paginate9 strong{display:inline-block;position:relative;_width /**/:24px;margin-right:1px;padding:4px 7px 5px;border:1px solid #fff;color:#000;font-family:Verdana;font-size:13px;font-weight:bold;line-height:normal;text-decoration:none;margin:-1px 3px}
+.paginate9 strong{border:1px solid #e9e9e9;color:#f23219 !important}
+.paginate9 .pre{margin-right:6px;padding:6px 6px 6px 14px;_padding-bottom:1px;background:url(/image/common/paginate/bu_pg3_l_off.gif) no-repeat 6px 5px !important;letter-spacing:-1px}
+.paginate9 .next{margin-left:4px;padding:6px 14px 6px 6px;_padding-bottom:1px;background:url(/image/common/paginate/bu_pg3_r_off.gif) no-repeat 62px 5px !important;letter-spacing:-1px}
+.paginate9 a.pre{background:url(/image/common/paginate/bu_pg3_l_on.gif) no-repeat 6px 10px !important;margin-top:2px}
+.paginate9 a.next{background:url(/image/common/paginate/bu_pg3_r_on.gif) no-repeat 65px 10px !important;margin-top:2px}
+.paginate9 .pre,.paginate9 .next{display:inline-block;position:relative;top:0;_top:-2px;_width /**/:75px;border:1px solid #e9e9e9;color:#ccc;;font-size:11px;line-height:normal}
+.paginate9 a.pre,.paginate9 a.next{color:#565656}
+.paginate9 a:hover{border:1px solid #e9e9e9;background-color:#f7f7f7 !important}
+
+
+/**
+	그리드 크기 조절 관련
+*/
+div.grid_drag_y_bar {
+    height:19px;
+    border-top:1px solid #E3E3E9;
+    border-left:1px solid #E3E3E9;
+    border-right:1px solid #E3E3E9;
+    border-bottom:1px solid #E3E3E9;
+}
+
+div.grid_drag_y_bar div.bar_y_gride {
+    padding-top:3px;
+    text-align:center;
+    position: relative;
+    /*
+    position: absolute;
+    width: 93%;
+    */
+    z-index: 50;
+    width: 100%;
+    cursor: ns-resize;
+}
+
+div.grid_drag_y_bar div.bar_y_gride a {
+   text-align:center;
+   background:url("/image/common/paginate/ico_extend.png") no-repeat;
+   width:30px;
+}

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.app.mapper.awareness.ItemTemplateMapper">
+  
+  <select id="getItemTemplateList" parameterType="com.app.models.ItemTemplateListRequestVO" resultType="com.app.models.ItemTemplateListVO">
+    /* com.app.mapper.awareness.ItemTemplateMapper.getItemTemplateList.강덕준 */
+    SELECT  'V' AS db_type,
+            itt.*
+    FROM    tb_item_template itt
+    WHERE   itt.question_srl = #{questionSrl}
+    <choose>
+      <when test="orders != null and orders != ''">
+        ORDER BY  ${orders}
+      </when>
+      <otherwise>
+        ORDER BY itt.sort_number
+      </otherwise>
+    </choose>
+  </select>
+  
+  <insert id="insertItemTemplateBatch" parameterType="java.util.Map">
+    /* com.app.mapper.awareness.ItemTemplateMapper.insertItemTemplateBatch.강덕준 */
+    INSERT INTO tb_item_template
+    (
+      item_name,
+      item_description,
+      sort_number,
+      question_srl,
+      created_user_srl,
+      created_at,
+      updated_user_srl,
+      updated_at
+    )
+    VALUES
+    <foreach item="item" index="index" collection="list" open="" separator="," close="">
+    (
+      #{item.itemName},
+      #{item.itemDescription},
+      #{item.sortNumber},
+      #{questionSrl},
+      #{item.createdUserSrl},
+      NOW(),
+      #{item.updatedUserSrl},
+      NOW()
+    )
+    </foreach>
+  </insert>
+  
+  <update id="updateItemTemplate" parameterType="com.app.models.ItemTemplateVO">
+    /* com.app.mapper.awareness.ItemTemplateMapper.updateItemTemplate.강덕준 */
+    UPDATE  tb_item_template
+    SET     item_name         = #{itemName},
+            item_description  = #{itemDescription},
+            sort_number       = #{sortNumber},
+            question_srl      = #{questionSrl},
+            updated_user_srl  = #{updatedUserSrl},
+            updated_at        = NOW()
+    WHERE   item_srl  = #{itemSrl}
+  </update>
+  
+  <update id="deleteItemTemplate" parameterType="java.lang.String">
+    /* com.app.mapper.awareness.ItemTemplateMapper.deleteItemTemplate.강덕준 */
+    DELETE  FROM tb_item_template
+    WHERE   item_srl  = #{itemSrl}
+  </update>
+</mapper>

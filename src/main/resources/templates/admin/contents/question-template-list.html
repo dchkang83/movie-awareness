@@ -1,0 +1,37 @@
+<script type="text/javascript" src="/js/admin/question-template-list.js" charset="UTF-8"></script>
+
+<!-- 탭 컨텐츠 시작 -->
+<div id="G_HEADER_FIEXD_EDGE">
+  <!-- 상단 고정된 영역 -->
+  <form name="fmSrch" id="fmSrch">
+    <!-- 현재페이지 -->
+    <input type="hidden" name="pageNumber" id="pageNumber" value="" />
+    <!-- 한페이지 레코드 수 -->
+    <input type="hidden" name="pageLimit" id="pageLimit" value="" />
+    <!-- 정렬 방법 -->
+    <input type="hidden" name="orderBy" id="orderBy" value="" />
+    
+    <div>
+      <div style="display: inline-block;">
+        <select id="srchType" name="srchType" style="width: 120px;">
+          <option value="questionName">질문지 명</option>
+          <option value="questionSrl">질문지 코드</option>
+        </select>
+      </div>
+      <div style="display: inline-block; ">
+        <input name="srchText" id="srchText" value="" placeholder="검색어" style="width: 200px; vertical-align: middle;" data-required="true" />
+      </div>
+      <div style="display: inline-block; float:right;">
+        <button type='button' class='btn btn-xs btn-default-search' id='btnSearch'>
+          <i class='fa fa-search' style='font-size:15px'></i> 조회
+        </button>
+      </div>
+    </div>
+    
+    <div style="height: 10px;"></div>
+  </form>
+</div>
+
+<div id="G_CONTENTS_EDGE" class="contents">
+  <div id="ctrl_QUESTION_TEMPLATE_LIST" class="list_edge"></div>
+</div>

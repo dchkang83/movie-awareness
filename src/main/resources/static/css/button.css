@@ -1,0 +1,26 @@
+/**
+ *	Button - v 0.1.0
+ */
+
+@charset "UTF-8";
+
+.btn-default-gray {
+    background-color : #ffffff;
+    border : 1px solid #818181 !important;
+}
+.btn-default-gray:hover {
+  color: #333;
+  background-color: #F7F7F7;
+  border-color: #adadad;
+}
+
+.btn-default-search {
+  color: #FFFFFF;
+  background-color : #85AD4D;
+  border : 1px solid #769844 !important;
+}
+.btn-default-search:hover {
+  color: #FFFFFF;
+  background-color: #678943;
+  border-color: #D3D3D3;
+}

@@ -1,0 +1,231 @@
+/**
+ *	Table - v 0.1.0
+ */
+
+@charset "UTF-8";
+
+div.list_title_edge { white-space:nowrap; height:26px; vertical-align: top; width: 100%; z-index:10; }
+div.list_title_edge > .title_left { white-space:nowrap; float: left; width:120px; }
+/*
+div.list_title_edge > .title_right { text-align: right; float: right; width:500px; text-align: right; margin-right:3px; }
+*/
+div.list_title_edge > .title_right { text-align: right; float: right; text-align: right; margin-right:3px; }
+div.list_title_edge > .line_nowrap { white-space:nowrap; }
+/*
+div.list_edge {}
+div.list_edge div > .ne_fixed_box {table-layout: fixed;white-space: nowrap;border-collapse: collapse;border: 1px solid E3E3E9;}
+div.list_edge:FIRST-CHILD {padding: 0px 0px 0px 0px;border-collapse: collapse; border:1px solid #E3E3E9; width:100%;} 
+*/
+table.ne_table > select { height : 17px; line-height : 17px; padding: 0; vertical-align: middle; }
+table.ne_table input { height : 18px; line-height : 18px; padding: 0; vertical-align: middle; }
+/*
+table.ne_table { table-layout:fixed; width:100%; margin:3px 0 1.5em; border:1px solid #ebebeb; border-width:1px 0 0 1px; border-spacing:0px; border-collapse:collapse; vertical-align: top; }
+*/
+table.ne_table { table-layout:fixed; width:100%; margin:0 0 0 0; border:1px solid #E3E3E9; border-width:1px 0 0 1px; border-spacing:0px; border-collapse:collapse; vertical-align: top; }
+table.ne_table tr { line-height: 32px; }
+table.ne_table caption { font-weight:bold;margin:0 0 1em;text-align:left; }
+table.ne_table th { background:#fcfcfc; font-size:11.5px; font-family: '돋움',dotum,applegothic,sans-serif; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: center;
+    padding:0.5em 0.75em;border:1px solid #E3E3E9;border-width:0 1px 1px 0; line-height: 25px; height: 25px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+/*
+table.ne_table th,
+*/
+table.ne_table td {
+    padding-left:5px; padding-right:5px; margin:0; border:1px solid #E3E3E9;border-width:0 1px 1px 0;
+    line-height: 25px; height: 25px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    color:#555555;
+    font-family: '돋움',dotum,applegothic,sans-serif;
+    font-size: 12px;
+}
+
+table.td_125 td {
+    padding-left:5px; padding-right:5px; margin:0; border:1px solid #E3E3E9;border-width:0 1px 1px 0;
+    line-height: 125px; height: 125px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+table.td_37 td {
+    padding-left:5px; padding-right:5px; margin:0; border:1px solid #E3E3E9;border-width:0 1px 1px 0;
+    line-height: 37px; height: 37px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+
+
+
+.btn-default.click { color:#58666e!important;background-color:red;border-color:#c7d3d6 }
+.btn-default.clear { color:#58666e!important;background-color:#edf1f2;border-color:#c7d3d6 }
+
+table tr.active{ background-color:#ffffef !important }
+table.d_table { table-layout:fixed;width:100%;margin:3px 0 1.5em;border:1px solid #E3E3E9;border-width:1px 0 0 1px;border-spacing:0px; border-collapse:collapse; }
+table.d_table caption { font-weight:bold;margin:0 0 1em;text-align:left; }
+table.d_table th, 
+table.d_table td { padding:0.5em 0.75em;border:1px solid #E3E3E9;border-width:0 1px 1px 0;}
+table.d_table th { background:#fcfcfc;font-size:11.5px;font-family: '돋움',dotum,applegothic,sans-serif; }
+
+table.d_table.inner { width:990px;margin:3px;}
+table.d_table.w1160 { width:1160px; }
+
+table.md_list {border-right:1px solid #E3E3E9 !important;}
+
+table.md_list thead tr th {border-right:0px !important;}
+table.md_list thead tr th:first-child {border-right:1px solid #E3E3E9 !important;}
+
+table.md_list tbody {text-align: center;}
+table.md_list tbody tr td:first-child {border-right:1px solid #E3E3E9 !important;}
+table.md_list tbody tr td {line-height: 22px; vertical-align: middel; padding-top: 3px; padding-bottom: 3px; border-right:0px !important; height: 62px;}
+table.md_list tbody tr td select {width:200px;}
+table.md_list tbody tr td input[type='text'] {width:197px;}
+
+table.md_list tbody tr td select.large {height: 45px;}
+table.md_list tbody tr td input[type='text'].large {height: 45px;}
+table.md_list tbody tr td input[type='text'].small {width:175px; height: 20px;}
+
+table.md_list tbody tr td button.large {width:40px;height: 45px;}
+
+/*
+div.list_edge div > .scroll_auto { overflow:auto; }
+*/
+
+/*
+.bar_gride{position:relative;margin-top:-1px}
+.bar_gride a{display:block;height:19px;padding:0 1px 0 1px;border:1px solid #efefef;background:#fff}
+.bar_gride .ico{position:absolute;top:50%;left:50%;width:10px;height:5px;margin:-3px 0 0 -5px;background:url(http://img.shop.naver.net/storefarm/admin/sp_bu2_v2.gif) -5px -593px}
+
+.blind {
+  visibility: hidden;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  font-size: 0;
+  line-height: 0;
+}
+*/
+
+
+
+
+
+
+
+
+/* IMAGE GALLERY TYPE 1 */
+.ne_gallery1 {
+    color:#666;
+    font-family: '돋움',dotum,applegothic,sans-serif;
+    font-size: 12px;
+    
+    height: auto;
+    width: auto;
+    min-width:700px;
+    min-height: 450px;
+    margin: 0px;
+    padding: 0px;
+    border: 0px solid #FFFFFF;
+    float: left;
+    text-align: center;
+}
+.ne_gallery1 div {
+    color:#666;
+    font-family: '돋움',dotum,applegothic,sans-serif;
+    font-size: 12px;
+}
+.ne_gallery1 div.img {
+    margin: 0px 15px 15px 0px;
+    padding: 0px;
+    /*border: 1px dotted #C5C5C5;*/
+    border: 0px solid #D3D3D3;
+    height: 250px;
+    width: 240px;
+    float: left;
+    text-align: center;
+}
+.ne_gallery1 div.img #gell_img {
+    display: inline;
+    margin: 5px;
+    border: 0px solid #FFFFFF;
+    width: 160px;
+    height: 160px;
+}
+.ne_gallery1 div.img a:hover #gell_img {
+    border:1px solid #D3D3D3;
+}
+.ne_gallery1 div.desc {
+    /*
+    text-align: center;
+    font-weight: normal;
+    width: 230px;
+    margin: 0px;
+    padding: 0px;
+    */
+    color:#666;
+    font-family: '돋움',dotum,applegothic,sans-serif;
+    font-size: 12px;
+}
+
+/* handle on the right */
+table.ne_table .ui-resizable-e {
+    width: 15px;
+    /*cursor: e-resize;*/
+    cursor: col-resize;
+}
+
+
+
+
+
+table.ne_table_help > select { height : 17px; line-height : 17px; padding: 0; vertical-align: middle; }
+table.ne_table_help input { height : 18px; line-height : 18px; padding: 0; vertical-align: middle; }
+table.ne_table_help { table-layout:fixed; width:100%; margin:0 0 0 0; border:1px solid #E3E3E9; border-width:1px 1px 1px 1px; border-spacing:0px; border-collapse:collapse; vertical-align: top; }
+table.ne_table_help tr { line-height: 32px; }
+table.ne_table_help caption { font-weight:bold;margin:0 0 1em;text-align:left; }
+table.ne_table_help th { background:#fcfcfc; font-size:11.5px; font-family: '돋움',dotum,applegothic,sans-serif;  overflow: hidden; text-overflow: ellipsis; text-align: center;
+    padding:0.5em 0.75em;border:1px solid #E3E3E9; border-width:0 1px 0 0; line-height: 25px; height: 25px; overflow: hidden; text-overflow: ellipsis; 
+}
+
+/* table.ne_table_help tbody {  border-top: 1px solid #E3E3E9;} */
+
+/*
+table.ne_table th,
+*/
+table.ne_table_help td {
+    padding-left:5px; padding-right:5px; margin:0; 
+    line-height: 25px; height: 40px; overflow: hidden; text-overflow: ellipsis; 
+    color:#555555;
+    font-family: '돋움',dotum,applegothic,sans-serif;
+    font-size: 12px;
+}
+
+table.d_table_form { table-layout:fixed;width:100%;margin:3px 0 1.5em;border:1px solid #E3E3E9;border-width:1px 0 0 0;border-spacing:0px; border-collapse:collapse; }
+table.d_table_form caption { font-weight:bold;margin:0 0 1em;text-align:left; }
+table.d_table_form th, 
+table.d_table_form td { padding:0.5em 0.75em;border:1px solid #E3E3E9; border-width:0 0 0 0;}
+table.d_table_form th { background:#fcfcfc;font-size:11.5px;font-family: '돋움',dotum,applegothic,sans-serif; }
+
+table.d_table_form.inner { width:990px;margin:3px;}
+table.d_table_form.w1160 { width:1160px; }
+
+
+
+table.ne_table_notice > select { height : 17px; line-height : 17px; padding: 0; vertical-align: middle; }
+table.ne_table_notice input { height : 18px; line-height : 18px; padding: 0; vertical-align: middle; }
+/*
+table.ne_table { table-layout:fixed; width:100%; margin:3px 0 1.5em; border:1px solid #ebebeb; border-width:1px 0 0 1px; border-spacing:0px; border-collapse:collapse; vertical-align: top; }
+*/
+table.ne_table_notice { table-layout:fixed; width:100%; margin:0 0 0 0; border:1px solid #E3E3E9; border-width:1px 0 0 1px; border-spacing:0px; border-collapse:collapse; vertical-align: top; }
+table.ne_table_notice tr { line-height: 32px; }
+table.ne_table_notice caption { font-weight:bold;margin:0 0 1em;text-align:left; }
+table.ne_table_notice th { background:#fcfcfc; font-size:13px; font-family: '돋움',dotum,applegothic,sans-serif; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: center;
+    padding:0.5em 0.75em;border:1px solid #E3E3E9;border-width:0 1px 1px 0; line-height: 25px; height: 25px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+/*
+table.ne_table th,
+*/
+table.ne_table_notice td {
+    padding-left:5px; padding-right:5px; margin:0; border:1px solid #E3E3E9;border-width:0 1px 1px 0;
+    line-height: 40px; height: 40px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    color:#555555;
+    font-family: '돋움',dotum,applegothic,sans-serif;
+    font-size: 11.5px;
+}
+
+

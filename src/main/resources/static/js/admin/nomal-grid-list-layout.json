@@ -1,0 +1,69 @@
+{
+	"information": {
+		"id": "NOMAL_GRID",
+		"caption": "기본 그리드",
+		"type": "LIST",
+		"width": "100%",
+		"height": "400",
+		"event": "C,D",
+		"sort": "DB",
+		"pageYn": "Y",
+		"pageDisplay": "10",
+		"ctrlFn": "fnCtrlFunction",
+		"cls": "ne_table table-hover"
+	},
+	"fields": [
+		{
+			"id": "company_cd",
+			"name": "설문코드",
+			"width": "5%"
+		},
+		{
+			"id": "product_cd",
+			"name": "설문명",
+			"cls": "point",
+			"sort": "Y",
+			"width": "20%"
+		},
+		{
+			"id": "product_cd1",
+			"name": "코드1",
+			"width": "5%"
+		},
+		{
+			"id": "product_cd2",
+			"name": "코드2",
+			"width": "10%"
+		},
+		{
+			"id": "product_cd3",
+			"name": "코드3",
+			"width": "10%"
+		},
+		{
+			"id": "product_cd4",
+			"name": "코드4",
+			"width": "10%"
+		},
+		{
+			"id": "product_cd5",
+			"name": "코드5",
+			"width": "10%"
+		},
+		{
+			"id": "product_cd6",
+			"name": "코드6",
+			"width": "10%"
+		},
+		{
+			"id": "product_cd7",
+			"name": "코드7",
+			"width": "10%"
+		},
+		{
+			"id": "val",
+			"name": "값",
+			"width": "10%"
+		}
+	]
+}
